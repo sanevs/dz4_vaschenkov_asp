@@ -1,0 +1,13 @@
+@using Catalog
+@model CatalogModel
+
+@{
+    Layout = "_Layout";
+    var catalog = Model.Catalog.GetProducts(DateTime.Now.DayOfWeek, "android");
+}
+
+<h2>Products:</h2>
+@foreach (var p in catalog)
+{
+    <div class="alert-info">@p.Name (@p.Category.Name category), @p.Price $</div>
+}
